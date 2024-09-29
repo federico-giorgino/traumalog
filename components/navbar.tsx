@@ -18,6 +18,7 @@ import { useState } from "react";
 import { NavigationItem } from "./navigation-item";
 import { Icons } from "./ui/icons";
 import { ThemeToggle } from "./theme-toggle";
+import { MobileMenu } from "./mobile-menu";
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -60,35 +61,10 @@ export function Navbar() {
         <ThemeToggle />
       </div>
       {/* Mobile Menu */}
-      <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-        <SheetTrigger asChild>
-          <Button variant="outline" size="icon" className="md:hidden">
-            <Menu className="h-6 w-6" />
-            <span className="sr-only">Toggle menu</span>
-          </Button>
-        </SheetTrigger>
-        <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-          <nav className="flex flex-col h-full">
-            <div className="flex items-center justify-between mb-6">
-              <Link
-                href="/"
-                className="flex items-center space-x-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <Mountain className="h-6 w-6" />
-                <span className="font-bold text-xl">Logo</span>
-              </Link>
-            </div>
-
-            <Button
-              className="mt-6 w-full"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Login
-            </Button>
-          </nav>
-        </SheetContent>
-      </Sheet>
+      <MobileMenu
+        isMobileMenuOpen={isMobileMenuOpen}
+        setIsMobileMenuOpen={setIsMobileMenuOpen}
+      />
     </nav>
   );
 }
