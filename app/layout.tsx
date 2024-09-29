@@ -30,7 +30,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <RootProvider>
           <Navbar />
-          {children}
+          <div className="container mx-auto p-10 sm:px-0 flex-1 flex min-h-screen">
+            {children}
+          </div>
         </RootProvider>
       </body>
     </html>
