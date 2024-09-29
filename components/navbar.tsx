@@ -17,16 +17,17 @@ import Link from "next/link";
 import { useState } from "react";
 import { NavigationItem } from "./navigation-item";
 import { Icons } from "./ui/icons";
+import { ThemeToggle } from "./theme-toggle";
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="flex items-center justify-between p-2 container  mx-auto">
+    <nav className="flex items-center justify-between p-4 container mx-auto">
       {/* Logo */}
       <Link href="/" className="flex items-center space-x-2">
         <Icons.logo className="h-6 w-6 text-primary" />
-        <span className="font-bold text-xl tracking-tighter">Traumalog</span>
+        <span className="font-bold text-2xl tracking-tighter">Traumalog</span>
       </Link>
 
       {/* Desktop Menu */}
@@ -55,8 +56,9 @@ export function Navbar() {
       </div>
 
       {/* Theme Button (Desktop) */}
-      <Button className="hidden md:inline-flex">Theme</Button>
-
+      <div className="hidden md:block">
+        <ThemeToggle />
+      </div>
       {/* Mobile Menu */}
       <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
         <SheetTrigger asChild>
